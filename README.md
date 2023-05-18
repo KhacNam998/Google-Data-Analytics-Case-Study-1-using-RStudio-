@@ -90,20 +90,22 @@ rm(t5_22,
    t3_23,
    t4_23)
 ```
-clean  the data
+Remove Na, unnecessary column and objects is only a bank
 ```{r}
 trip_data <-drop_na(trip_data)
 ```
 ```{r}
-trip_data_v1 <- trip_data %>% 
-  filter(ride_id!="",
-         rideable_type!="",
+trip_data <- subset(trip_data, select = -c(ride_id, start_station_id, end_station_id))
+
+```
+
+```{r}
+all_trips <- trip_data %>% 
+  filter(rideable_type!="",
          started_at!="",
          ended_at!="",
          start_station_name!="",
-         start_station_id!="",
          end_station_name!="",
-         end_station_id!="",
          start_lat!="",
          start_lng!="",
          end_lat!="",
@@ -111,7 +113,81 @@ trip_data_v1 <- trip_data %>%
          member_casual!="")
 ```
 
-Check it
+
+Add columns that list the date, month, day, and year
 ```{r}
-str(trip_data_)
+all_trips$date <- as.Date(all_trips$started_at)
+all_trips$month <- format(as.Date(all_trips$date), "%B")
+all_trips$day <- format(as.Date(all_trips$date), "%d")
+all_trips$year <- format(as.Date(all_trips$date), "%Y")
+all_trips$day_of_week <- weekdays(all_trips$date)
+```
+
+Order the days of the week. Will also order the month
+```{r}
+all_trips$day_of_week <- ordered(all_trips$day_of_week, levels=c( "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"))
+
+all_trips$month <- ordered(all_trips$month, levels=c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))
+```
+
+
+Calculate the trip length and convert it to Minutes
+```{r}
+all_trips$trip_length <- difftime(all_trips$ended_at,all_trips$started_at, units="mins")  
+all_trips$trip_length <- round(all_trips$trip_length, 2)
+```
+
+Check the data structure
+```{r}
+str(all_trips)
+```
+Convert Trip_length to numeric 
+```{r}
+all_trips$trip_length <- as.numeric(all_trips$trip_length)
+
+```
+
+Remove observations where the trip length is less than 0
+```{r}
+all_trips <- filter(all_trips, trip_length > 0)
+```
+export file
+```{r}
+write.csv(all_trips, 
+          file = file.path("E:\\Work\\data\\Cyclistic\\2022-2023", "all_trips.csv"))
+```
+## Analysis
+Descriptive analysis on trip_length 
+```{r}
+mean(all_trips$trip_length)
+median(all_trips$trip_length) 
+max(all_trips$trip_length)
+min(all_trips$trip_length) 
+```
+Comparing members and casual users
+```{r}
+aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = mean)
+aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = median)
+aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = max)
+aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = min)
+```
+## Share
+Total Number of Trips by Day
+```{r}
+all_trips %>% 
+  group_by(member_casual, day_of_week) %>% 
+  summarise(number_of_trips = n(), average_duration = mean(trip_length)) %>%
+  arrange(member_casual, day_of_week)%>% 
+  ggplot(aes(x = day_of_week, y = number_of_trips, fill = member_casual)) +
+  geom_col(position = "dodge") + labs(title="Total Number of Trips by Day", x = "Week Day", y = "Number of Trip")
+```
+Total Number of Trips by Month
+```{r}
+all_trips %>% 
+  group_by(member_casual, month) %>% 
+  summarise(number_of_trips = n(), average_duration = mean(trip_length)) %>%
+  arrange(member_casual, month)%>% 
+  ggplot(aes(x = month, y = number_of_trips, fill = member_casual)) +
+  geom_col(position = "dodge") + labs(title="Total Number of Trips by Month", x = "Month", y = "Number of Trip") + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
 ```
