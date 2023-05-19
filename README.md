@@ -242,6 +242,42 @@ By using a visualization tool such as Tableau, we can create  well-designed visu
   As we can observe, annual members constitute 60.5% of the total trips, while casual riders account for 39.5% of the trips. The number of trips for annual members remains relatively stable throughout the week and month. This suggests a possibility that annual members are using the bikes as their primary mode of transportation.
  The other hand, casual members have considerably longer average trip durations compared to annual members. This suggests that casual members primarily use the bikes for leisure activities or possibly sports activities, which could explain the extended trip durations.
 ![aver_week](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/b4f9bf4f-3f4a-4f34-ac2d-7bbcfb6c0144)
+ 
+ 
+ ![s_e](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/36d0fe4b-a3b4-4b6f-ba6b-01a9932c333c)
+  Based on the above chart, it is evident that members have peak usage times between 6-9 am and 5-7 pm, which align with the typical rush hour periods. These peak periods strongly indicate that members are local residents who rely on Cyclistic's bikes as a part of their daily routines, likely for commuting to and from work or other regular activities.
 
+  Both of these insights strongly support our hypothesis and we can strongly belive that
+- The members and casual customers are two different customer groups.
+- The members are working locals who use the bikes to commute daily to and from their workplaces, while casual customers are tourists and use the bikes for sightseeing around Chicago.
+
+ 
+Now let's dive deeper and look at a map of Chicago.
 ![viz_ppst](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/504b5c7b-ac2a-495f-b0ee-8dda8c0a411c)
+  
+  From the map charts, it is clear that the starting and ending locations of members are concentrated in the downtown area of Chicago, indicating that they predominantly use Cyclistic's bikes for commuting to businesses and offices in that area. On the other hand, casual customers' locations are more spread out,  near the beach and big parks, that suggesting  they use the bikes for exploring different areas of Chicago and enjoying leisurely rides.
+
+  And another thing  that can be noticed from this chart.
+
+![bike_type](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/2dac2d57-0fdc-449e-8667-13d748ad7291)
+  Since only casual customers make use of the dock_type, this presents an opportunity to strategize advertising campaigns focused on converting casual customers into members.
+  
+## BUSINESS SUGGESTIONS
+
+  This is my first experience working on a real-life data analyst project. I acknowledge that I have limited expertise in offering business suggestions or working in marketing. Therefore, I would highly appreciate any feedback or input regarding this matter.
+  
+  These are my suggestions for the marketing team to convert casual riders to annual members:
+- Introduction of  Memberships: Marketing team must focus on top 10 stations during May to September which time has high the casual's trip. the best odds to launch the new marketing campaign which are around the popular tourist's site for: 
+  *A weekly, monthly and quarterly membership schemes
+
+- Emphasize the benefits of memberships, including discounts during busy times of the year like during Summer, or on the weekends. 
+
+- Have existing members to share their stories about how using Cyclistic's system has changed their life, to create a sense of community, offer a discount if they do so this will help encourage new riders to join the program. 
+
+
+
+
+
+
+
 
