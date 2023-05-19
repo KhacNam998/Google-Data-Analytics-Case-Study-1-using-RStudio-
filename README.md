@@ -230,7 +230,7 @@ ggplot(data = all_trips) +
 ```
 ![trip per month](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/1e181b3a-62b7-4f17-8cd2-db784f822882)
 
-## Share (Tableu)
+## Share (Tableau)
   For interactive Tableau Dashboard, click in this [link](https://public.tableau.com/app/profile/le.nam/viz/Googledataanalystcasestudy1Cyclistic/Dashboard2).
 By using a visualization tool such as Tableau, we can create  well-designed visuals to assist in the share phase. Here are my findings.
 
