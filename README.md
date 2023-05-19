@@ -163,31 +163,56 @@ mean(all_trips$trip_length)
 median(all_trips$trip_length) 
 max(all_trips$trip_length)
 min(all_trips$trip_length) 
-```
-Comparing members and casual users
+```!
+
+Comparing trip_length members and casual users
+
 ```{r}
 aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = mean)
 aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = median)
 aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = max)
 aggregate(all_trips$trip_length ~ all_trips$member_casual , FUN = min)
 ```
-## Share
-Total Number of Trips by Day
+
+The most popular start station and end station by member
+
 ```{r}
-all_trips %>% 
-  group_by(member_casual, day_of_week) %>% 
-  summarise(number_of_trips = n(), average_duration = mean(trip_length)) %>%
-  arrange(member_casual, day_of_week)%>% 
-  ggplot(aes(x = day_of_week, y = number_of_trips, fill = member_casual)) +
-  geom_col(position = "dodge") + labs(title="Total Number of Trips by Day", x = "Week Day", y = "Number of Trip")
+count(filter(all_trips, member_casual=='member'), start_station_name, sort = T ,name = "total_trip")
 ```
-Total Number of Trips by Month
+[popular_start_st](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/818f98ac-02a5-412e-869d-f81b51792884)
+
 ```{r}
-all_trips %>% 
-  group_by(member_casual, month) %>% 
-  summarise(number_of_trips = n(), average_duration = mean(trip_length)) %>%
-  arrange(member_casual, month)%>% 
-  ggplot(aes(x = month, y = number_of_trips, fill = member_casual)) +
-  geom_col(position = "dodge") + labs(title="Total Number of Trips by Month", x = "Month", y = "Number of Trip") + 
-  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+count(filter(all_trips, member_casual=='member'), end_station_name, sort = T ,name = "total_trip")
+```
+
+The most popular start station and end station by casual
+
+```{r}
+count(filter(all_trips, member_casual=='casual'), start_station_name, sort = T , name = "total_trip")
+
+```
+
+```{r}
+count(filter(all_trips, member_casual=='casual'), end_station_name, sort = T , name = "total_trip")
+```
+
+
+## Share(RStudio)
+
+Because the total number of trips will become very big. The value of ‘Number of trips’ would be displayed as 2e+05, 4e+05 so i use options(scipen =) to remove scientific values from our graphs
+
+```{r}
+options(scipen = 999)
+
+```
+
+Total Number of Trips by Day
+
+```{r}
+ggplot(data = all_trips) +
+  aes(x = day_of_week, fill = member_casual) +
+  geom_bar(position = 'dodge') +
+  labs(x = 'Day of week', y = 'Number of trips', fill = 'Member type', title = 'Number of trips by member type') +
+    theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
 ```
