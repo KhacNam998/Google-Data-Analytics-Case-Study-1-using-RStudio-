@@ -179,7 +179,7 @@ The most popular start station and end station by member
 ```{r}
 count(filter(all_trips, member_casual=='member'), start_station_name, sort = T ,name = "total_trip")
 ```
-[popular_start_st](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/818f98ac-02a5-412e-869d-f81b51792884)
+![popular_start_st](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/818f98ac-02a5-412e-869d-f81b51792884)
 
 ```{r}
 count(filter(all_trips, member_casual=='member'), end_station_name, sort = T ,name = "total_trip")
