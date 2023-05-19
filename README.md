@@ -232,3 +232,16 @@ ggplot(data = all_trips) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1))
 ```
 ![trip per month](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/1e181b3a-62b7-4f17-8cd2-db784f822882)
+
+## Share (Tableu)
+  You can see the slide show on this [link](https://public.tableau.com/app/profile/le.nam/viz/Googledataanalystcasestudy1Cyclistic/Dashboard2).
+By using a visualization tool such as Tableau, we can create  well-designed visuals to assist in the share phase. Here are my findings.
+
+![view_data](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/9d9c1206-1b97-4446-9fb8-8c718abbcd28)
+
+  As we can observe, annual members constitute 60.5% of the total trips, while casual riders account for 39.5% of the trips. The number of trips for annual members remains relatively stable throughout the week and month. This suggests a possibility that annual members are using the bikes as their primary mode of transportation.
+ The other hand, casual members have considerably longer average trip durations compared to annual members. This suggests that casual members primarily use the bikes for leisure activities or possibly sports activities, which could explain the extended trip durations.
+![aver_week](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/b4f9bf4f-3f4a-4f34-ac2d-7bbcfb6c0144)
+
+![viz_ppst](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/504b5c7b-ac2a-495f-b0ee-8dda8c0a411c)
+
