@@ -184,6 +184,7 @@ count(filter(all_trips, member_casual=='member'), start_station_name, sort = T ,
 ```{r}
 count(filter(all_trips, member_casual=='member'), end_station_name, sort = T ,name = "total_trip")
 ```
+![end_st](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/191efb58-e774-4730-be85-7f38ccce91be)
 
 The most popular start station and end station by casual
 
@@ -191,10 +192,12 @@ The most popular start station and end station by casual
 count(filter(all_trips, member_casual=='casual'), start_station_name, sort = T , name = "total_trip")
 
 ```
+![popular_start_st_by casual](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/b301af79-37d9-438f-9340-f6742024077d)
 
 ```{r}
 count(filter(all_trips, member_casual=='casual'), end_station_name, sort = T , name = "total_trip")
 ```
+![popular_end_st by casual](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/80241b15-01cd-4958-b456-8c4a26c05c09)
 
 
 ## Share(RStudio)
@@ -216,3 +219,16 @@ ggplot(data = all_trips) +
     theme(axis.text.x = element_text(angle = 60, hjust = 1))
 
 ```
+![trip per day](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/e13da215-6bf2-43c5-bd37-557268907a75)
+
+
+Total Number of Trips by Month
+
+```{r}
+ggplot(data = all_trips) +
+  aes(x = month, fill = member_casual) +
+  geom_bar(position = 'dodge') +
+  labs(x = 'Month', y = 'Number of trips', fill = 'Member type', title = 'Number of trips per month') + 
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+```
+![trip per month](https://github.com/KhacNam998/Google-Data-Analytics-Case-Study-1-using-RStudio-/assets/128809896/1e181b3a-62b7-4f17-8cd2-db784f822882)
